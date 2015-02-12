@@ -298,7 +298,7 @@ int main()
 				vector <double> Tabdist_simple= simplifietab(nbseries, h,  t, Tabdist );
 
 
-				vector <double> Positions_min = argminmultpile(Tabdist_simple,k);
+				vector <double> Positions_min = argminmultiple(Tabdist_simple,k);
 
 
 				vector < vector <double> > Seq_min; //seq-min contient les tableaux les plus proches de seq_a_predire
@@ -336,7 +336,7 @@ int main()
             erreurmoy.push_back(erreurmoykh[3*i-1]); // on stocke les m
 	  };
 
-    int arg = argmin2(erreurmoy);
+    int arg = argmin(erreurmoy);
     int bestk = erreurmoykh[3*arg];
     int besth = erreurmoykh[3*arg +1];
 
@@ -390,7 +390,7 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 
 				vector <double> Tabdist_simple= simplifietab(nbseries, besth,  tailletab, Tabdist );
 
-				vector <double> Positions_min = argminmultpile(Tabdist_simple,bestk);
+				vector <double> Positions_min = argminmultiple(Tabdist_simple,bestk);
 
                 vector < vector <double> > Seq_min; //seq-min contient les tableaux les plus proches de seq_a_predire
 				vector <double> Val_suiv; //Ce tableau va stocker les valeurs suivantes des seq_min
