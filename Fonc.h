@@ -41,7 +41,7 @@ double choix_dist(std::vector <double> tab1, std::vector <double> tab2, int p);
 int argmin2 (std::vector <double> tab);
 
 /////////////////////////////////////////////
-//Fonctions propores au projets en lui-même//
+//Fonctions propores au projet en lui-même//
 /////////////////////////////////////////////
 
 std::vector <double> extract(std::vector <double> tab,int indice_debut,int h);
