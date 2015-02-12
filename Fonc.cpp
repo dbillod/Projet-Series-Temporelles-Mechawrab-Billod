@@ -178,7 +178,6 @@ vector <vector<double> > matrice_sous_seq(vector <double> tab,int h){ /*matrice 
 vector <double> argminmultpile(vector <double> tab, int k){
 	int n = tab.size();
 	vector <double> tab1(n,1);
-	//vector <double> res1(k,1);
 	vector <double> res2(k,1);
 	for (int i =0; i<n;i++){
             tab1[i]= tab[i];
@@ -188,7 +187,6 @@ vector <double> argminmultpile(vector <double> tab, int k){
     for (int i =0; i<k;i++){
         double m = min2(tab1);
         int a = argmin2(tab1);
-        //res1[i]= m;
         res2[i]= a;
         tab1[a]= max2(tab)+1;
 

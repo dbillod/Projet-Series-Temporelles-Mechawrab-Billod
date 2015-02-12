@@ -176,19 +176,48 @@ int main()
             string sxi = "x" + Res;
             Nom_series.push_back(sxi);
             }
+
+
+///////////////////////////////////////////////////////////////////////////
+//Pour prevoir plusieurs valeurs on va la faire distance par distance//////
+//Donc on crée 3 tableaux de tableaux qui stockeront les données updatees//
+///////////////////////////////////////////////////////////////////////////
+    vector <vector <double> >tabdatap0=tabdata;
+    vector <vector <double> >tabdatap1=tabdata;
+    vector <vector <double> >tabdatap2=tabdata;
+
+    int nbprevision = 1;
+
     while(nbcoup>0){
+            cout<<"****************************"<<endl;
+            cout<<"Prevision de y en T+"<<nbprevision<<endl;
+            cout<<"****************************"<<endl;
+            nbprevision+=1;
+
+
             nbcoup = nbcoup-1;
-            if (nbcoup>0){
+
+            /*if (nbcoup>0){
                 for (int i =0; i<tailletab-1;i++){
                     tabdata[0][i]= tabdata[0][i+1];
                 }
-                tabdata[tailletab-1] = Ensemble_previsions2
-            }
+                tabdata[tailletab-1] = prevision
+            }*/
 
       for (int p =0;p<3;p++){
             ////////////////////////////////////////////
             //On va faire varier le choix de distances//
             ////////////////////////////////////////////
+            if(p==0){
+                tabdata = tabdatap0;
+            }
+            if (p==1){
+                tabdata = tabdatap1;
+            }
+            if(p==2){
+                tabdata = tabdatap2;
+            }
+
 
       for(int k=1; k<10; k++){
 
@@ -400,6 +429,17 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 				cout<< "La prevision pour le prochain terme de y renorme est " << prevision<<endl;
 				cout<< "La prevision pour le prochain terme de y est "<< prevision * ecart_type(tabdata[0])<<endl;
 				Ensemble_previsions.push_back(prevision * ecart_type(tabdata[0]));
+
+				if(p==0){
+                    tabdatap0[0].push_back(prevision*ecart_type(tabdata[0]));
+				}
+				if (p==1){
+                    tabdatap1[0].push_back(prevision*ecart_type(tabdata[0]));
+				}
+				if (p==2){
+                    tabdatap2[0].push_back(prevision*ecart_type(tabdata[0]));
+				}
+
 				double prog = 100* (prevision * ecart_type(tabdata[0])- tabdata[0][tailletab-1] )/tabdata[0][tailletab-1];
 				cout<<"Soit une variation de "<<prog<<"%"<<endl;
 				cout<<" "<<endl;
@@ -416,6 +456,12 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
                 Indice_utileglobal.push_back(Indice_utile);
                 cout<<" "<<endl;
       }//Fin du for p
+
+      tabdatap0[0].erase(tabdatap0.begin()+0);
+      tabdatap1[0].erase(tabdatap0.begin()+0);
+      tabdatap2[0).erase(tabdatap0.begin()+0);
+
+
     }//fin du while nbcoup
 
 
