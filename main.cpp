@@ -416,6 +416,7 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
                 Indice_utileglobal.push_back(Indice_utile);
                 cout<<" "<<endl;
       }//Fin du for p
+    }//fin du while nbcoup
 
 
       cout<<"-------------------------------------------------------------"<<endl;
