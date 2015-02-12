@@ -160,7 +160,9 @@ int main()
         vector <double> erreurmoykh;
 
         vector <vector <double > > Indice_utileglobal;
-        vector <double> Ensemble_previsions;
+        vector <double>Ensemble_previsionsp0;
+        vector <double>Ensemble_previsionsp1;
+        vector <double>Ensemble_previsionsp2;
 
         //////////////////////////////////////////////////////////////////////
         // On va stocker le nom des series explicatives sous forme x1, x2...//
@@ -428,16 +430,19 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 				cout<<"------------------------------------------------------"<<endl;
 				cout<< "La prevision pour le prochain terme de y renorme est " << prevision<<endl;
 				cout<< "La prevision pour le prochain terme de y est "<< prevision * ecart_type(tabdata[0])<<endl;
-				Ensemble_previsions.push_back(prevision * ecart_type(tabdata[0]));
+
 
 				if(p==0){
                     tabdatap0[0].push_back(prevision*ecart_type(tabdata[0]));
+                    Ensemble_previsionsp0.push_back(prevision * ecart_type(tabdata[0]));
 				}
 				if (p==1){
                     tabdatap1[0].push_back(prevision*ecart_type(tabdata[0]));
+                    Ensemble_previsionsp1.push_back(prevision * ecart_type(tabdata[0]));
 				}
 				if (p==2){
                     tabdatap2[0].push_back(prevision*ecart_type(tabdata[0]));
+                    Ensemble_previsionsp2.push_back(prevision * ecart_type(tabdata[0]));
 				}
 
 				double prog = 100* (prevision * ecart_type(tabdata[0])- tabdata[0][tailletab-1] )/tabdata[0][tailletab-1];
@@ -464,6 +469,10 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 
     }//fin du while nbcoup
 
+    vector <vector <double> > Ensemble_previsions;
+    Ensemble_previsions.push_back(Ensemble_previsionsp0);
+    Ensemble_previsions.push_back(Ensemble_previsionsp1);
+    Ensemble_previsions.push_back(Ensemble_previsionsp2);
 
       cout<<"-------------------------------------------------------------"<<endl;
       cout<<"Resume des resultats avec les differentes distances (p=0,1,2)"<<endl;
@@ -473,12 +482,33 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 
       cout<<" p "<<" Series utiles "<<" Prediction "<<endl;
       for (int p =0; p<3;p++){
-            for (int n=0;n<nbseries-1;n++){
-                    if(n==0){
-                        cout<<"p="<<p<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p]<<"      "<<endl;
-                            }
-                    else{
-                        cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<endl;
+            if(nbseries-1<= nbprevision){
+                for (int n=0;n<nbprevision;n++){
+
+                        if(n==0){
+                            cout<<"p="<<p<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
+                                }
+                        if(n<nbseries-1){
+                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        }
+                        else{
+                            cout<<"   "<<"   "<<"   "<<"    "<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        }
+                }
+            }
+
+            if (nbseries-1>nbprevision){
+                    for (int n=0;n<nbseries-1;n++){
+
+                        if(n==0){
+                            cout<<"p="<<p<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
+                                }
+                        if(n<nbprevision){
+                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        }
+                        else{
+                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<endl;
+                        }
                     }
             }
       }
