@@ -256,7 +256,7 @@ vector <vector <double> > coupertab(int nbseries, int t, vector <vector<double> 
 			  }
 			  tabdata_coupe.push_back(data);
 		  }
-    return tabdata_coupe
+    return tabdata_coupe;
 }
 
 
