@@ -1,7 +1,5 @@
 #include<iostream>
 #include<strstream>
-#include<random>
-#include<time.h>
 #include<vector>
 #include<cmath>
 #include<typeinfo>
@@ -33,22 +31,22 @@ int main()
       ///////////////////////////////////////////////////////////////////
             //////////////// NOTA BENE ///////////////////
 
-    //Ce fichier doit avoir un présentation précise//
-    //Il doit avoir à la première ligne une lettre//
-    //Puis la série correspondante, de la plus ancienne valeur à la plus récente//
-    //Puis une autre letre , puis une autre série..//
+    //Ce fichier doit avoir un prÃ©sentation prÃ©cise//
+    //Il doit avoir Ã  la premiÃ¨re ligne une lettre//
+    //Puis la sÃ©rie correspondante, de la plus ancienne valeur Ã  la plus rÃ©cente//
+    //Puis une autre letre , puis une autre sÃ©rie..//
 
     /////ATTENTION//////
-    //Ne pas créer accidentellement avec Entrée, artificiellement des lignes sans caractères en plus, cela fera bugger le compteur du nombre de series//
+    //Ne pas crÃ©er accidentellement avec EntrÃ©e, artificiellement des lignes sans caractÃ¨res en plus, cela fera bugger le compteur du nombre de series//
 
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
-    cout<<"Ce code necessite une presentation precise du fichier txt à utiliser"<<endl;
+    cout<<"Ce code necessite une presentation precise du fichier txt Ã  utiliser"<<endl;
     cout<<"Consulter le fichier Formes_donnees.txt pour plus d'explications"<<endl;
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
     cout<<" "<<endl;
 
     cout<<"*************************************************************************************************"<<endl;
-    cout<<"Le programme est concu pour ne prévoir par défaut que la prochiane valeur de la serie a expliquer"<<endl;
+    cout<<"Le programme est concu pour ne prÃ©voir par dÃ©faut que la prochiane valeur de la serie a expliquer"<<endl;
     cout<<"*************************************************************************************************"<<endl;
     cout<<""<<endl;
 
@@ -73,19 +71,19 @@ int main()
 
 
     ifstream monFlux(sflux);
-	//ifstream monFlux(" W:/Bureau/C++/Projet C++/Prévision Séries Temp/Prévision Séries Temp/seriesini.txt" );
-	//ifstream monFlux ("//paradis/eleves/DBILLOD/Bureau/C++/Projet C++/Prévision Séries Temp/Prévision Séries Temp/seriesini.txt");
+	//ifstream monFlux(" W:/Bureau/C++/Projet C++/PrÃ©vision SÃ©ries Temp/PrÃ©vision SÃ©ries Temp/seriesini.txt" );
+	//ifstream monFlux ("//paradis/eleves/DBILLOD/Bureau/C++/Projet C++/PrÃ©vision SÃ©ries Temp/PrÃ©vision SÃ©ries Temp/seriesini.txt");
 
 
     if(monFlux)
    {
-      //L'ouverture s'est bien passée, on peut donc lire
+      //L'ouverture s'est bien passÃ©e, on peut donc lire
 
       string ligne; //Une variable pour stocker les lignes lues
       int nbdouble = 0;
       int nbseries = 0;
 
-      while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
+      while(getline(monFlux, ligne)) //Tant qu'on n'est pas Ã  la fin, on lit
       {
           if(ligne==""){
                 cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
@@ -109,7 +107,7 @@ int main()
       vector <double> TAB;
       int i =0;
       monFlux.close();
-      ifstream monFlux(sflux);//on ferme et on réouvre le fichier pour pas bugger le prochain while
+      ifstream monFlux(sflux);//on ferme et on rÃ©ouvre le fichier pour pas bugger le prochain while
       string ligne2;
       while(getline(monFlux, ligne2))
       {
@@ -120,7 +118,7 @@ int main()
               //cout<<"ligne2="<<ligne2<<endl;
               double d;
               if (istr>>d){
-              TAB.push_back(d); //on crée un tableau où on stocke les doubles du fichier
+              TAB.push_back(d); //on crÃ©e un tableau oÃ¹ on stocke les doubles du fichier
               i = i+1;
               }
           }
@@ -182,7 +180,7 @@ int main()
 
 ///////////////////////////////////////////////////////////////////////////
 //Pour prevoir plusieurs valeurs on va la faire distance par distance//////
-//Donc on crée 3 tableaux de tableaux qui stockeront les données updatees//
+//Donc on crÃ©e 3 tableaux de tableaux qui stockeront les donnÃ©es updatees//
 ///////////////////////////////////////////////////////////////////////////
     vector <vector <double> >tabdatap0=tabdata;
     vector <vector <double> >tabdatap1=tabdata;
@@ -231,12 +229,12 @@ int main()
 
 
             /*
-		  //on va couper nos séries
+		  //on va couper nos sÃ©ries
 		  vector < vector <double> > tabdata_coupe;
 		  for(int  i= 0; i<nbseries;i++){
                 vector<double> data;
 			  for(int j =0; j< t; j++){
-				   // on crée notre tableau coupé
+				   // on crÃ©e notre tableau coupÃ©
 				  data.push_back(tabdata[i][j]);
 
 			  }
@@ -255,18 +253,18 @@ int main()
 
 
 //////////////////////////////////////////////////////////
-	  //On a construit un tableau résumant les données//
+	  //On a construit un tableau rÃ©sumant les donnÃ©es//
 //////////////////////////////////////////////////////////
 
 
 
-				vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale toutes les sous équences de taille h
+				vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale toutes les sous Ã©quences de taille h
 
 				for(int i =0; i<nbseries;i++){
 				Mat_totale.push_back(matrice_sous_seq(tabdata_r[i],h));
 			   }
 
-				vector<double> Seq_a_predire = extract(tabdata_r[0],t-h,h);// Seq_a_predire est la dernière séq de y d etaille h
+				vector<double> Seq_a_predire = extract(tabdata_r[0],t-h,h);// Seq_a_predire est la derniÃ¨re sÃ©q de y d etaille h
 
 
                 /*
@@ -281,7 +279,7 @@ int main()
 				}*/
 
 
-                //Tabdist est un tableau dont le premier élément est un tableau de taille h qui comprte tailletab-h élémets qui sont les distances des séquences extraites // à ce qu'il faut prédire
+                //Tabdist est un tableau dont le premier Ã©lÃ©ment est un tableau de taille h qui comprte tailletab-h Ã©lÃ©mets qui sont les distances des sÃ©quences extraites // Ã  ce qu'il faut prÃ©dire
                 vector <vector <double>  >  Tabdist=tabdist(nbseries,h,t,Mat_totale,Seq_a_predire,p);
 
 
@@ -306,7 +304,7 @@ int main()
 					int reste = Positions_min[i]-quotient*(t-h+1);
 					Seq_min.push_back(Mat_totale[quotient+1][reste]);
 					if(reste == t-h){
-					 Val_suiv.push_back(Mat_totale[quotient+1][reste][h-1]);//Si on tombe sur le dernier terme d'une série, on ne prend pas la valeur suivante mais ce terme
+					 Val_suiv.push_back(Mat_totale[quotient+1][reste][h-1]);//Si on tombe sur le dernier terme d'une sÃ©rie, on ne prend pas la valeur suivante mais ce terme
 					}
 					else {
 					Val_suiv.push_back( Mat_totale[quotient+1][reste+1][h-1] );
@@ -352,7 +350,7 @@ int main()
     cout<<" "<<endl;
 
 ////////////////////////////////////////////
-  //On a donc trouvé nos k et h optimaux//
+  //On a donc trouvÃ© nos k et h optimaux//
 ////////////////////////////////////////////
 
 
@@ -370,19 +368,19 @@ int main()
 
 
 //////////////////////////////////////////////////////////
-	  //On a construit un tableau résumant les données//
+	  //On a construit un tableau rÃ©sumant les donnÃ©es//
 //////////////////////////////////////////////////////////
 
 
-vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale toutes les sous équences de taille h
+vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale toutes les sous Ã©quences de taille h
 
 				for(int i =0; i<nbseries;i++){
 				Mat_totale.push_back(matrice_sous_seq(tabdata_r[i],besth));
 			   }
 
-				vector<double> Seq_a_predire = extract(tabdata_r[0],tailletab-besth,besth);// Seq_a_predire est la dernière séq de y d etaille h
+				vector<double> Seq_a_predire = extract(tabdata_r[0],tailletab-besth,besth);// Seq_a_predire est la derniÃ¨re sÃ©q de y d etaille h
 
-                //Tabdist est un tableau dont le premier élément est un tableau de taille h qui comprte tailletab-h élémets qui sont les distances des séquences extraites // à ce qu'il faut prédire
+                //Tabdist est un tableau dont le premier Ã©lÃ©ment est un tableau de taille h qui comprte tailletab-h Ã©lÃ©mets qui sont les distances des sÃ©quences extraites // Ã  ce qu'il faut prÃ©dire
                 vector <vector <double>  >  Tabdist=tabdist(nbseries,besth,tailletab,Mat_totale,Seq_a_predire,p);
 
 				vector <double> Tabdist_simple= simplifietab(nbseries, besth,  tailletab, Tabdist );
@@ -391,22 +389,22 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 
                 vector < vector <double> > Seq_min; //seq-min contient les tableaux les plus proches de seq_a_predire
 				vector <double> Val_suiv; //Ce tableau va stocker les valeurs suivantes des seq_min
-				double Indice_util[nbseries-1]; //On crée ce tableau pour svoir quelles séries ont été les plus utiles
+				double Indice_util[nbseries-1]; //On crÃ©e ce tableau pour svoir quelles sÃ©ries ont Ã©tÃ© les plus utiles
 
 				for (int i=0; i< nbseries -1; i++){
 
-                    Indice_util[i]=0; //On remplit le tableau de 0, valeur par défaut de l'utilité d'une série
+                    Indice_util[i]=0; //On remplit le tableau de 0, valeur par dÃ©faut de l'utilitÃ© d'une sÃ©rie
 				}
 
 
 				for(int i =0; i<bestk;i++){
 					int quotient = (Positions_min[i])/(tailletab-besth+1);
 					int reste = Positions_min[i]-quotient*(tailletab-besth+1);
-					Indice_util[quotient] =Indice_util[quotient]+ 100/(double)bestk;// On stocke en pourcentage l'interêt de la série comme sa part dans les plus proches voisins
+					Indice_util[quotient] =Indice_util[quotient]+ 100/(double)bestk;// On stocke en pourcentage l'interÃªt de la sÃ©rie comme sa part dans les plus proches voisins
 
-					Seq_min.push_back(Mat_totale[quotient+1][reste]); //On se place ne quotient +1 pour ne pas tomber sur la série à prévoir
+					Seq_min.push_back(Mat_totale[quotient+1][reste]); //On se place ne quotient +1 pour ne pas tomber sur la sÃ©rie Ã  prÃ©voir
 					if(reste == tailletab-besth){
-					 Val_suiv.push_back(Mat_totale[quotient+1][reste][besth-1]);//Si on tombe sur le dernier terme d'une série, on ne prend pas la valeur suivante mais ce terme
+					 Val_suiv.push_back(Mat_totale[quotient+1][reste][besth-1]);//Si on tombe sur le dernier terme d'une sÃ©rie, on ne prend pas la valeur suivante mais ce terme
 					}
 					else {
 					Val_suiv.push_back( Mat_totale[quotient+1][reste+1][besth-1] );
@@ -426,7 +424,7 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 				double prevision = moyenne(Val_suiv);
 
                 cout<<"------------------------------------------------------"<<endl;
-                cout<<"Prevision avec paramètres optimaux"<<endl;
+                cout<<"Prevision avec paramÃ¨tres optimaux"<<endl;
 				cout<<"------------------------------------------------------"<<endl;
 				cout<< "La prevision pour le prochain terme de y renorme est " << prevision<<endl;
 				cout<< "La prevision pour le prochain terme de y est "<< prevision * ecart_type(tabdata[0])<<endl;
