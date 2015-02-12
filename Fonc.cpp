@@ -1,6 +1,6 @@
 #include "Fonc.h"
 
-
+#include <climits>
 #include<iostream>
 #include<strstream>
 #include<vector>
@@ -23,21 +23,21 @@ double min_tab (vector <double> tab)
 		if (tab[i]<m)
 		{
 			m = tab[i];
-		};
+		}
 	}
 	return m;
 }
 
-double max2(vector <double> tab){
+double max_tab(vector <double> tab)
+{
 	int n = tab.size();
-	double m = tab[0];
-	for (int i =0; i<n;i++){
-
-		if(tab[i]>m){
-			m=tab[i];
-		};
+	double m;
+	for (int i =0; i<n;i++)
+	{
+	tab[i]=-tab[i];
 	}
-	return m;
+	m=min_tab(tab);
+	return -m;
 }
 
 double distance2( vector <double> tab1,vector <double> tab2) {
@@ -98,7 +98,7 @@ double distanceinf(vector <double> tab1, vector <double> tab2){
 			T.push_back(abs((tab1[i]-tab2[i])));
 		}
 	}
-	return max2(T);
+	return max_tab(T);
 
 
 }
@@ -118,9 +118,8 @@ double choix_dist(vector <double> tab1, vector <double> tab2, int p){
 
 }
 
-int argmin2 (vector <double> tab){
-	double m = min2(tab);
-	//int n = tab.size();
+int argmin (vector <double> tab){
+	double m = min_tab(tab);
 	int i =0;
 	double a = 0;
 	while (a ==0){
@@ -134,8 +133,6 @@ int argmin2 (vector <double> tab){
 			i++;
 		}
 	}
-
-
 }
 
 vector <double> extract(vector <double> tab,int indice_debut,int h)  /* extraction d’une sous sequence de taille h et de premier terme tab indice_debut */
@@ -172,24 +169,15 @@ vector <vector<double> > matrice_sous_seq(vector <double> tab,int h){ /*matrice 
 
 
 
-vector <double> argminmultpile(vector <double> tab, int k){
-	int n = tab.size();
-	vector <double> tab1(n,1);
-	vector <double> res2(k,1);
-	for (int i =0; i<n;i++){
-            tab1[i]= tab[i];
-	};
-
-
-    for (int i =0; i<k;i++){
-        double m = min2(tab1);
-        int a = argmin2(tab1);
-        res2[i]= a;
-        tab1[a]= max2(tab)+1;
-
-
-    };
-    return res2;
+vector <double> argminmultiple(vector <double> tab, int k){  
+	vector <double> tab_argmin;
+    for (int i=0;i<k;i++)
+    {
+    int j=argmin(tab);
+    tab_argmin.push_back(j);
+    tab[j]=ULLONG_MAX;         // le tableau tab ne sera pas modifie a la sortie de la fonction (passage d'argument par valeur)
+    }
+    return tab_argmin;
 }
 
 
@@ -199,7 +187,7 @@ double moyenne(vector <double> tab){
 	double m =0;
 	for(int i =0 ;i<n; i++){
 		m = m + (tab[i]/n);
-	};
+	}
 	return (m);
 }
 
@@ -222,7 +210,7 @@ vector <double> renorm(vector <double> tab){
 	double stddev= 0;
 	for(int i =0 ; i<n;i++){
 		stddev = stddev + ((tab[i]-m)*(tab[i]-m))/n;
-	};
+	}
 	if (stddev ==0)
 	{
 		cout <<"le tableau ne varie pas" <<endl;
@@ -230,7 +218,7 @@ vector <double> renorm(vector <double> tab){
 	}
 	for(int i = 0; i<n; i++){
 		tab2[i]= (tab[i])/sqrt(stddev);
-	};
+	}
 	return tab2;
 }
 
@@ -239,7 +227,7 @@ void afficher (vector <double> tab){
 	int n = tab.size();
 	for (int i =0 ; i<n; i++){
 		cout<< tab[i]<<endl;
-	};
+	}
 }
 
 //On va coder des petites fonctions pour alléger le main
@@ -250,9 +238,9 @@ vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double>
               vector <double> data;
               for(int j =0;j<tailletab;j++){
                   data.push_back(TAB[i*tailletab+j]);
-              };
+              }
               tabdata3.push_back(data);
-          };
+          }
     return tabdata3;
 }
 
@@ -268,7 +256,7 @@ vector <vector <double> > coupertab(int nbseries, int t, vector <vector<double> 
 			  }
 			  tabdata_coupe.push_back(data);
 		  }
-    return tabdata_coupe;
+    return tabdata_coupe
 }
 
 
@@ -282,7 +270,7 @@ vector <vector <double> > tabdist(int nbseries, int h,int t ,vector <vector <vec
 						}
 						Tabdist.push_back( temp_disttab );
 						//cout<<"i="<<i<<endl;
-				};
+				}
 				return Tabdist;
 }
 
@@ -292,7 +280,7 @@ vector <double> simplifietab(int nbseries, int h, int t, vector <vector <double>
 					for (int j = 0;j<t-h+1;j++){
 					Tabdist_simple.push_back(Tabdist[i][j]);
 					}
-				};
+				}
 				return Tabdist_simple;
 }
 
