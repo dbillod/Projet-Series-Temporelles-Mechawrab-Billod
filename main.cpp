@@ -47,12 +47,8 @@ int main()
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
     cout<<" "<<endl;
 
-    cout<<"*************************************************************************************************"<<endl;
-    cout<<"Le programme est concu pour ne prévoir par défaut que la prochiane valeur de la serie a expliquer"<<endl;
-    cout<<"*************************************************************************************************"<<endl;
-    cout<<""<<endl;
-
-    cout<<"Mais vous pouvez demander combien de valeurs vous voulez prevoir"<<endl;
+    cout<<"Combien de valeurs vous voulez prevoir?"<<endl;
+    cout<<" "<<endl;
     int nbcoup;
     cin>> nbcoup;
 
@@ -66,8 +62,8 @@ int main()
 
 
     //string sflux = "C:/Users/David/Documents/ENSAE/2A/C++/Series_PIB_Cons_Emploi.txt";
-    //string sflux = "./seriesx1_2.txt";
-    string sflux ="./Series_PIB_Cons_Emploi.txt";
+    string sflux = "./seriesx1_2.txt";
+    //string sflux ="./Series_PIB_Cons_Emploi.txt";
 
 
 
@@ -188,11 +184,11 @@ int main()
     vector <vector <double> >tabdatap1=tabdata;
     vector <vector <double> >tabdatap2=tabdata;
 
-    int nbprevision = 1;
+    int nbprevision = 0;
 
     while(nbcoup>0){
             cout<<"****************************"<<endl;
-            cout<<"Prevision de y en T+"<<nbprevision<<endl;
+            cout<<"Prevision de y en T+"<<nbprevision+1<<endl;
             cout<<"****************************"<<endl;
             nbprevision+=1;
 
@@ -462,9 +458,9 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
                 cout<<" "<<endl;
       }//Fin du for p
 
-      tabdatap0[0].erase(tabdatap0.begin()+0);
-      tabdatap1[0].erase(tabdatap0.begin()+0);
-      tabdatap2[0).erase(tabdatap0.begin()+0);
+      (tabdatap0[0]).erase(tabdatap0[0].begin()+0);
+      (tabdatap1[0]).erase(tabdatap1[0].begin()+0);
+      (tabdatap2[0]).erase(tabdatap2[0].begin()+0);
 
 
     }//fin du while nbcoup
@@ -488,11 +484,11 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
                         if(n==0){
                             cout<<"p="<<p<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
                                 }
-                        if(n<nbseries-1){
-                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        if(n<nbseries-1&&n>0){
+                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
                         }
-                        else{
-                            cout<<"   "<<"   "<<"   "<<"    "<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        if(n>=nbseries-1){
+                            cout<<"   "<<"   "<<"   "<<"    "<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
                         }
                 }
             }
@@ -503,10 +499,10 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
                         if(n==0){
                             cout<<"p="<<p<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
                                 }
-                        if(n<nbprevision){
-                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "endl;
+                        if(n<nbprevision&&n>0){
+                            cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<"       "<<Ensemble_previsions[p][n]<<"      "<<endl;
                         }
-                        else{
+                        if(n>=nbprevision){
                             cout<<"   "<<"   "<<Nom_series[n]<<" "<<"("<<Indice_utileglobal[p][n]<<"%)"<<endl;
                         }
                     }
