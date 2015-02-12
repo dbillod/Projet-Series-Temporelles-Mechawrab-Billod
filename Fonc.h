@@ -1,29 +1,18 @@
 #ifndef FONC_H_INCLUDED
 #define FONC_H_INCLUDED
 
-
-
-#include<iostream>
-#include<strstream>
-#include<random>
-#include<time.h>
 #include<vector>
-#include<cmath>
-#include<typeinfo>
-#include<fstream>
-#include<sstream>
 #include<string>
-#include <stdio.h>
-#include <stdlib.h>
+
 
 ///////////////////////////
 // Fonctions statistiques//
 ///////////////////////////
 
-double min2 (std::vector <double> tab);
+double min_tab (std::vector <double> tab);
 
 
-double max2(std::vector <double> tab);
+double max_tab(std::vector <double> tab);
 
 
 double distance2( std::vector <double> tab1,std::vector <double> tab2);
@@ -38,10 +27,10 @@ double distanceinf(std::vector <double> tab1,std::vector <double> tab2);
 double choix_dist(std::vector <double> tab1, std::vector <double> tab2, int p);
 
 
-int argmin2 (std::vector <double> tab);
+int argmin (std::vector <double> tab);
 
 /////////////////////////////////////////////
-//Fonctions propores au projet en lui-même//
+//Fonctions propres au projet en lui-mÃªme//
 /////////////////////////////////////////////
 
 std::vector <double> extract(std::vector <double> tab,int indice_debut,int h);
@@ -50,7 +39,7 @@ std::vector <double> extract(std::vector <double> tab,int indice_debut,int h);
 std::vector <std::vector<double> > matrice_sous_seq(std::vector <double> tab,int h);
 
 
-std::vector <double> argminmultpile(std::vector <double> tab, int k);
+std::vector <double> argminmultiple(std::vector <double> tab, int k);
 
 
 double moyenne(std::vector <double> tab);
