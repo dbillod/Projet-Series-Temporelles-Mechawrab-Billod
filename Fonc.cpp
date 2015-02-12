@@ -3,8 +3,6 @@
 
 #include<iostream>
 #include<strstream>
-#include<random>
-#include<time.h>
 #include<vector>
 #include<cmath>
 #include<typeinfo>
@@ -14,11 +12,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 using namespace std;
 
-
-double min2 (vector <double> tab){
+double min_tab (vector <double> tab)
+{
 	int n = tab.size();
 	double m = tab[0];
 	for (int i = 0; i<n; i++)
@@ -50,7 +47,7 @@ double distance2( vector <double> tab1,vector <double> tab2) {
 	double d =0;
 	if (n1 != n2)
 	{
-		cout<< "Problème de taille - fonction distance"<<endl;
+		cout<< "ProblÃ¨me de taille - fonction distance"<<endl;
 	}
 	else
 	{
@@ -64,13 +61,13 @@ double distance2( vector <double> tab1,vector <double> tab2) {
 
 
 double distance1( vector <double> tab1, vector <double> tab2){
-    //C'est la norme 1 de la différence entre deux vecteurs
+    //C'est la norme 1 de la diffÃ©rence entre deux vecteurs
     int n1 = tab1.size();
     int n2 = tab2.size();
     double d= 0;
     if (n1!= n2)
     {
-		cout<< "Problème de taille - fonction distance"<<endl;
+		cout<< "ProblÃ¨me de taille - fonction distance"<<endl;
 	}
     else
 	{
@@ -85,14 +82,14 @@ double distance1( vector <double> tab1, vector <double> tab2){
 }
 
 double distanceinf(vector <double> tab1, vector <double> tab2){
-    //C'est la norme infinie de la différence entre deux vecteurs
+    //C'est la norme infinie de la diffÃ©rence entre deux vecteurs
     int n1 = tab1.size();
     int n2 = tab2.size();
     vector <double> T;
     double d= 0;
     if (n1!= n2)
     {
-		cout<< "Problème de taille - fonction distance"<<endl;
+		cout<< "ProblÃ¨me de taille - fonction distance"<<endl;
 	}
     else
 	{
@@ -141,7 +138,7 @@ int argmin2 (vector <double> tab){
 
 }
 
-vector <double> extract(vector <double> tab,int indice_debut,int h)  /* extraction d’une sous sequence de taille h et de premier terme tab indice_debut */
+vector <double> extract(vector <double> tab,int indice_debut,int h)  /* extraction dâ€™une sous sequence de taille h et de premier terme tab indice_debut */
 {
     vector <double> sub_tab;
 	int n=tab.size();
@@ -245,7 +242,7 @@ void afficher (vector <double> tab){
 	};
 }
 
-//On va coder des petites fonctions pour alléger le main
+//On va coder des petites fonctions pour allÃ©ger le main
 
 vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double> TAB ){
     vector <vector <double> > tabdata3;
@@ -260,12 +257,12 @@ vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double>
 }
 
 vector <vector <double> > coupertab(int nbseries, int t, vector <vector<double> > tabdata){
-		  //on va couper nos séries
+		  //on va couper nos sÃ©ries
 		  vector < vector <double> > tabdata_coupe;
 		  for(int  i= 0; i<nbseries;i++){
                 vector<double> data;
 			  for(int j =0; j< t; j++){
-				   // on crée notre tableau coupé
+				   // on crÃ©e notre tableau coupÃ©
 				  data.push_back(tabdata[i][j]);
 
 			  }
