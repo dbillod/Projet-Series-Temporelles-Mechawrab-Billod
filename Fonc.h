@@ -29,6 +29,12 @@ double choix_dist(std::vector <double> tab1, std::vector <double> tab2, int p);
 
 int argmin (std::vector <double> tab);
 
+
+double moyenne(std::vector <double> tab);
+
+
+double ecart_type (std::vector <double> tab);
+
 /////////////////////////////////////////////
 //Fonctions propres au projet en lui-même//
 /////////////////////////////////////////////
@@ -42,10 +48,7 @@ std::vector <std::vector<double> > matrice_sous_seq(std::vector <double> tab,int
 std::vector <double> argminmultiple(std::vector <double> tab, int k);
 
 
-double moyenne(std::vector <double> tab);
 
-
-double ecart_type (std::vector <double> tab);
 
 
 std::vector <double> renorm(std::vector <double> tab);
