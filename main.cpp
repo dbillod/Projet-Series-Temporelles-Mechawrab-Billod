@@ -44,18 +44,15 @@ int main()
     cout<<"Consulter le fichier Formes_donnees.txt pour plus d'explications"<<endl;
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
     cout<<" "<<endl;
-
-<<<<<<< HEAD
     cout<<"Combien de valeurs vous voulez prevoir?"<<endl;
     cout<<" "<<endl;
-=======
+
     cout<<"*************************************************************************************************"<<endl;
     cout<<"Le programme est concu pour ne prévoir par défaut que la prochiane valeur de la serie a expliquer"<<endl;
     cout<<"*************************************************************************************************"<<endl;
     cout<<""<<endl;
 
     cout<<"Mais vous pouvez demander combien de valeurs vous voulez prevoir"<<endl;
->>>>>>> origin/master
     int nbcoup;
     cin>> nbcoup;
 
