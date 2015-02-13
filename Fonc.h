@@ -57,7 +57,7 @@ void afficher (std::vector <double> tab);
 std::vector < std::vector <double> > tabdata2(int nbseries, int tailletab, std::vector <double> TAB );
 
 
-std::vector <std::vector <double> > coupertab(int nbseries, int t, std::vector <std::vector<double> > tabdata);
+std::vector <std::vector <double> > coupertab(int t, std::vector <std::vector<double> > tabdata);
 
 
 std::vector <std::vector <double> > tabdist(int nbseries, int h,int t ,std::vector <std::vector <std::vector <double> > >  Mat_totale, std::vector<double> Seq_a_predire,int p );
