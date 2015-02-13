@@ -37,7 +37,7 @@ int main()
     //Puis une autre letre , puis une autre série..//
 
     /////ATTENTION//////
-    //Ne pas créer accidentellement avec Entrée, artificiellement des lignes sans caractères en plus, cela fera bugger le compteur du nombre de series//
+    //le fichier texte contenant les donnees doit obligatoirement se terminer par le mot: fin//
 
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
     cout<<"Ce code necessite une presentation precise du fichier txt à utiliser"<<endl;
