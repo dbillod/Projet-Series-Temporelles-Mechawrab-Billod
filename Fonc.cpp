@@ -244,18 +244,25 @@ vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double>
     return tabdata3;
 }
 
-vector <vector <double> > coupertab(int nbseries, int t, vector <vector<double> > tabdata){
-		  //on va couper nos séries
-		  vector < vector <double> > tabdata_coupe;
-		  for(int  i= 0; i<nbseries;i++){
-                vector<double> data;
-			  for(int j =0; j< t; j++){
-				   // on crée notre tableau coupé
-				  data.push_back(tabdata[i][j]);
+vector <vector <double> > coupertab(int t, vector <vector<double> > tabdata){
+		  int n=matrice_data.size();
+		  int m=matrice_data[0].size();
+          vector < vector <double> > tabdata_coupe;
+		  if(t>m)
+          {
+              cout <<"t trop grand"<<endl;
+              return tabdata_coupe;
+          }
 
-			  }
-			  tabdata_coupe.push_back(data);
-		  }
+          for(int  i= 0; i<n;i++)
+            {
+                vector<double> data;
+              for(int j =0; j< t; j++)
+              {
+                  data.push_back(matrice_data[i][j]);
+              }
+              tabdata_coupe.push_back(data);
+            }
     return tabdata_coupe;
 }
 
