@@ -87,9 +87,13 @@ int main()
 
       while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
       {
-          if(ligne=="fin"){
+          if(ligne=="fin"){          // critere d'arret
             break;
           }
+          if (ligne =="")
+		 {
+			 continue;   // encas 
+		 }
          else{
          istringstream istr(ligne);
          double i;
