@@ -87,11 +87,8 @@ int main()
 
       while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
       {
-          if(ligne==""){
-                cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
-                cout<<"!Le fichier contient une ligne vide!"<<endl;
-                cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
-                cout<<" "<<endl;
+          if(ligne=="fin"){
+            break;
           }
          else{
          istringstream istr(ligne);
