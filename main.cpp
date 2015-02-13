@@ -40,19 +40,19 @@ int main()
     //le fichier texte contenant les donnees doit obligatoirement se terminer par le mot: fin//
 
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
-    cout<<"Ce code necessite une presentation precise du fichier txt à utiliser"<<endl;
+    cout<<"Ce code necessite une presentation precise du fichier txt a utiliser"<<endl;
     cout<<"Consulter le fichier Formes_donnees.txt pour plus d'explications"<<endl;
     cout<<"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"<<endl;
     cout<<" "<<endl;
-    cout<<"Combien de valeurs vous voulez prevoir?"<<endl;
+	
+	cout<<"Veuillez indiquer le chemin d'acces du fichier txt contenant les series a utiliser"<<endl;
+    string chemin;
+    cin>>chemin;
+
+
+    cout<<"Combien de valeurs vous voulez prevoir (nombre entier) ?"<<endl;
     cout<<" "<<endl;
 
-    cout<<"*************************************************************************************************"<<endl;
-    cout<<"Le programme est concu pour ne prévoir par défaut que la prochiane valeur de la serie a expliquer"<<endl;
-    cout<<"*************************************************************************************************"<<endl;
-    cout<<""<<endl;
-
-    cout<<"Mais vous pouvez demander combien de valeurs vous voulez prevoir"<<endl;
     int nbcoup;
     cin>> nbcoup;
 
@@ -60,17 +60,17 @@ int main()
 
 
 
-    /*cout<<"Veuillez indiquer le chemin d'acces du fichier txt contenant les series a utiliser"<<endl;
-    string chemin;
-    cin>>chemin;*/
+  
 
 
     //string sflux = "C:/Users/David/Documents/ENSAE/2A/C++/Series_PIB_Cons_Emploi.txt";
-    string sflux = "./seriesx1_2.txt";
+    string sflux = "./seriesini.txt";
     //string sflux ="./Series_PIB_Cons_Emploi.txt";
+	//string sflux = "W:/Bureau/C++/Projet C++/Prévision Séries Temp/seriesini.txt";
+	//string sflux = "//paradis/eleves/DBILLOD/Bureau/C++/Projet C++/Prévision Séries Temp/seriesini.txt";
+	//string sflux = chemin;
 
-
-
+	//cout<<"sflux = "<<sflux<<endl;
 
     ifstream monFlux(sflux);
 	//ifstream monFlux(" W:/Bureau/C++/Projet C++/Prévision Séries Temp/Prévision Séries Temp/seriesini.txt" );
@@ -81,77 +81,36 @@ int main()
    {
       //L'ouverture s'est bien passée, on peut donc lire
 
-      string ligne; //Une variable pour stocker les lignes lues
-      int nbdouble = 0;
-      int nbseries = 0;
-
-      while(getline(monFlux, ligne)) //Tant qu'on n'est pas à la fin, on lit
+    string ligne; //cette variable stocke les lignes lues
+    vector <double> TAB;
+    int nbdouble = 0;
+    int nbseries = 0;
+      while(getline(monFlux, ligne))
       {
-          if(ligne=="fin"){          // critere d'arret
-            break;
-          }
-          if (ligne =="")
-		 {
-			 continue;   // si une ligne vide est ajoutee par erreur 
-		 }
-         else{
+         if (ligne=="fin")
+         {
+             break;
+         }
+             if (ligne =="")
+             {
+                    continue;
+             }
          istringstream istr(ligne);
-         double i;
-            if (istr>>i){
-         nbdouble=nbdouble +1;//on compte le nombre de double
-
+         double d;
+         if (istr>>d){
+         nbdouble=nbdouble +1;//on compte le nombre total de valeurs
+         TAB.push_back(d);
          }
-            else{
-            nbseries ++;
+         else
+         {
+            nbseries++;
          }
-         }
-
       }
-      vector <double> TAB;
-      int i =0;
-      monFlux.close();
-      ifstream monFlux(sflux);//on ferme et on réouvre le fichier pour pas bugger le prochain while
-      string ligne2;
-      while(getline(monFlux, ligne2))
-      {
-          if (ligne2 ==""){
-          }
-          else{
-              istringstream istr(ligne2);
-              //cout<<"ligne2="<<ligne2<<endl;
-              double d;
-              if (istr>>d){
-              TAB.push_back(d); //on crée un tableau où on stocke les doubles du fichier
-              i = i+1;
-              }
-          }
-      };
+
 
         int tailletab = nbdouble/nbseries;
 
-	  /*for (int i = 0 ; i<nbseries; i++){
-		  vector <double> data;
-		  for(int j =0;j<tailletab;j++){
-			  data.push_back(TAB[i*tailletab+j]);
-		  }
-		  tabdata.push_back(data);
-	  }*/
-
         vector <vector <double> > tabdata = tabdata2(nbseries,tailletab,TAB);
-
-           /* while(nbcoup>0){
-                    nbcoup=nbcoup-1;
-                if (nbcoup>0){
-                        for (int i =0; i<tailletab-1;i++){
-                            tabdata[0][i]= tabdata[0][i+1];
-                        }
-                        tabdata[tailletab-1] = Ensemble_prevision
-                }
-                //for p
-                //Prevision pour tous les p
-                vector <vector <double> > Ensemble_previsions2[p].push_back(Ensemnle_previsions[p]);
-
-        	  }*/
 
 ////////////////////////////////////////////////////////////////
     //On veut trouver les meilleurs k et h par cross validation
@@ -200,13 +159,6 @@ int main()
 
             nbcoup = nbcoup-1;
 
-            /*if (nbcoup>0){
-                for (int i =0; i<tailletab-1;i++){
-                    tabdata[0][i]= tabdata[0][i+1];
-                }
-                tabdata[tailletab-1] = prevision
-            }*/
-
       for (int p =0;p<3;p++){
             ////////////////////////////////////////////
             //On va faire varier le choix de distances//
@@ -230,22 +182,7 @@ int main()
 
 	  for(int t = 5;  t< tailletab ;t++){
 
-
-            /*
-		  //on va couper nos séries
-		  vector < vector <double> > tabdata_coupe;
-		  for(int  i= 0; i<nbseries;i++){
-                vector<double> data;
-			  for(int j =0; j< t; j++){
-				   // on crée notre tableau coupé
-				  data.push_back(tabdata[i][j]);
-
-			  }
-			  tabdata_coupe.push_back(data);
-		  }
-            */
-
-            vector < vector <double> > tabdata_coupe = coupertab(nbseries, t,tabdata);
+            vector < vector <double> > tabdata_coupe = coupertab(t, tabdata);
 
 		  //on va renormer les tableaux
 		vector <vector<double> >tabdata_r;
@@ -275,7 +212,6 @@ int main()
 						vector <double> temp_disttab;
 						for (int indice_debut = 0; indice_debut<t-h+1;indice_debut++){
 							temp_disttab.push_back(  distance2( Mat_totale[i][indice_debut] , Seq_a_predire )  );
-
 						}
 						Tabdist.push_back( temp_disttab );
 						cout<<"i="<<i<<endl;
@@ -392,11 +328,12 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 
                 vector < vector <double> > Seq_min; //seq-min contient les tableaux les plus proches de seq_a_predire
 				vector <double> Val_suiv; //Ce tableau va stocker les valeurs suivantes des seq_min
-				double Indice_util[nbseries-1]; //On crée ce tableau pour svoir quelles séries ont été les plus utiles
+				vector <double> Indice_util;
+				//double Indice_util[nbseries-1]; //On crée ce tableau pour savoir quelles séries ont été les plus utiles
 
 				for (int i=0; i< nbseries -1; i++){
 
-                    Indice_util[i]=0; //On remplit le tableau de 0, valeur par défaut de l'utilité d'une série
+					Indice_util.push_back(0); //On remplit le tableau de 0, valeur par défaut de l'utilité d'une série
 				}
 
 
@@ -427,7 +364,7 @@ vector <vector <vector <double> > > Mat_totale; // on va stocker dans Mat_totale
 				double prevision = moyenne(Val_suiv);
 
                 cout<<"------------------------------------------------------"<<endl;
-                cout<<"Prevision avec paramètres optimaux"<<endl;
+                cout<<"Prevision avec parametres optimaux"<<endl;
 				cout<<"------------------------------------------------------"<<endl;
 				cout<< "La prevision pour le prochain terme de y renorme est " << prevision<<endl;
 				cout<< "La prevision pour le prochain terme de y est "<< prevision * ecart_type(tabdata[0])<<endl;
