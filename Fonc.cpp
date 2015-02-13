@@ -232,7 +232,7 @@ void afficher (vector <double> tab){
 
 //On va coder des petites fonctions pour alléger le main
 
-vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double> TAB ){
+vector < vector <double> > construire_matrice_data(int nbseries, int tailletab, vector <double> TAB ){
     vector <vector <double> > tabdata3;
     for (int i = 0 ; i<nbseries; i++){
               vector <double> data;
@@ -261,7 +261,7 @@ vector <vector <double> > coupertab(int t, vector <vector<double> > tabdata){
 }
 
 
-vector <vector <double> > tabdist(int nbseries, int h,int t ,vector <vector <vector <double> > >  Mat_totale, vector<double> Seq_a_predire,int p ){
+vector <vector <double> > construire_matrice_distance(int nbseries, int h,int t ,vector <vector <vector <double> > >  Mat_totale, vector<double> Seq_a_predire,int p ){
                 vector <vector <double> > Tabdist;
 				for(int i =1; i<nbseries;i++){
 						vector <double> temp_disttab;
