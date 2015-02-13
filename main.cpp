@@ -92,7 +92,7 @@ int main()
           }
           if (ligne =="")
 		 {
-			 continue;   // encas 
+			 continue;   // si une ligne vide est ajoutee par erreur 
 		 }
          else{
          istringstream istr(ligne);
