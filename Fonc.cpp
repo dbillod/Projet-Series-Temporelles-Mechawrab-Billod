@@ -245,21 +245,15 @@ vector < vector <double> > tabdata2(int nbseries, int tailletab, vector <double>
 }
 
 vector <vector <double> > coupertab(int t, vector <vector<double> > tabdata){
-		  int n=matrice_data.size();
-		  int m=matrice_data[0].size();
+		  int n=tabdata.size();
+		  int m=tabdata[0].size();
           vector < vector <double> > tabdata_coupe;
-		  if(t>m)
-          {
-              cout <<"t trop grand"<<endl;
-              return tabdata_coupe;
-          }
-
           for(int  i= 0; i<n;i++)
             {
                 vector<double> data;
               for(int j =0; j< t; j++)
               {
-                  data.push_back(matrice_data[i][j]);
+                  data.push_back(tabdata[i][j]);
               }
               tabdata_coupe.push_back(data);
             }
@@ -290,4 +284,3 @@ vector <double> simplifietab(int nbseries, int h, int t, vector <vector <double>
 				}
 				return Tabdist_simple;
 }
-
