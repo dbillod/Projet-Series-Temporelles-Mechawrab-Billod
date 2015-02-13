@@ -48,22 +48,19 @@ std::vector <std::vector<double> > matrice_sous_seq(std::vector <double> tab,int
 std::vector <double> argminmultiple(std::vector <double> tab, int k);
 
 
-
-
-
 std::vector <double> renorm(std::vector <double> tab);
 
 
 void afficher (std::vector <double> tab);
 
 
-std::vector < std::vector <double> > tabdata2(int nbseries, int tailletab, std::vector <double> TAB );
+std::vector < std::vector <double> > construire_matrice_data(int nbseries, int tailletab, std::vector <double> TAB );
 
 
 std::vector <std::vector <double> > coupertab(int t, std::vector <std::vector<double> > tabdata);
 
 
-std::vector <std::vector <double> > tabdist(int nbseries, int h,int t ,std::vector <std::vector <std::vector <double> > >  Mat_totale, std::vector<double> Seq_a_predire,int p );
+std::vector <std::vector <double> > construire_matrice_distance(int nbseries, int h,int t ,std::vector <std::vector <std::vector <double> > >  Mat_totale, std::vector<double> Seq_a_predire,int p );
 
 
 std::vector <double> simplifietab(int nbseries, int h, int t, std::vector <std::vector <double> > Tabdist );
